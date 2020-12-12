@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+    <body class="text-center">
+
+        <div class="card shadow-sm mx-2 mt-2">
+            <div class="card-header font-weight-bold">
+                Calendar
+            </div>
+
+            <div class="card-body">
+                <div class="card-text">
+                    날짜마다의 식사 기록을 남기세요
+                </div>
+            </div>
+        </div>
+        <div id="calendar" style="margin: 40px"></div>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/locales-all.min.js"></script>
+        <link rel="stylesheet" type="text/css"
+              href="https://cdn.jsdelivr.net/npm/fullcalendar@5.4.0/main.min.css">
+        <script>
+            function dateClick(info) {
+                alert('date clicked');
+                console.log(info);
+            }
+            $(document).ready(function () {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                    initialView: 'dayGridMonth',
+                    dateClick: dateClick
+                });
+                calendar.render();
+            });
+        </script>
+    </body>
+{% endblock %}
